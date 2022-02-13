@@ -1,0 +1,14 @@
+.preloader {
+    width: 60px;
+    /*display: inherit;*/
+    display: none;
+    box-shadow: 0 0 0 0;
+}
+
+.error_warning {
+    display: none;
+}
+
+.comments_table {
+    display: none;
+}
