@@ -4,7 +4,7 @@ function getRandomInt(max) {
 
 function getDataFromAPI() {
     let num = getRandomInt(3) + 1;
-    return fetch('https://my-json-server.typicode.com/usachova/pictures-for-site/comments?third=' + num)
+    return fetch('https://my-json-server.typicode.com/usachova/ITMO-WEB/comments?third=' + num)
         .then(response => response.json())
         .then(json => json)
 }
