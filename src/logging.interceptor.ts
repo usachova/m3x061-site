@@ -12,10 +12,11 @@ export class LoggingInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const start = performance.now();
     return next.handle().pipe(
-      map(() => {
+      map((data) => {
         const resp = context.switchToHttp().getResponse();
         const end = performance.now();
         resp.cookie('server', (end - start).toString() + 'ms');
+        return data;
       }),
     );
   }
