@@ -5,43 +5,69 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
   @Get()
   @Render('index.hbs')
   root() {
-    return { title: '😤🤟M33061😎😷️' };
+    return {
+      title: '😤🤟M33061😎😷️',
+      logged: true,
+      unlogged: false,
+      user: 'гость',
+    };
   }
 
   @Get('ais')
   @Render('ais.hbs')
   ais() {
-    return { title: 'Архитектура информационных систем' };
+    return {
+      title: 'Архитектура информационных систем',
+      logged: false,
+      unlogged: true,
+      user: '',
+    };
   }
 
   @Get('web')
   @Render('web.hbs')
   web() {
-    return { title: 'Web-программирование' };
+    return {
+      title: 'Web-программирование',
+      logged: false,
+      unlogged: true,
+      user: '',
+    };
   }
 
   @Get('philosophy')
   @Render('philosophy.hbs')
   philosophy() {
-    return { title: 'Философия' };
+    return {
+      title: 'Философия',
+      logged: false,
+      unlogged: true,
+      user: '',
+    };
   }
 
   @Get('practice')
   @Render('practice.hbs')
   practice() {
-    return { title: 'Практика' };
+    return {
+      title: 'Практика',
+      logged: false,
+      unlogged: true,
+      user: '',
+    };
   }
 
   @Get('telecom')
   @Render('telecom.hbs')
   telecom() {
-    return { title: 'Телекоммуникационные системы и технологии' };
+    return {
+      title: 'Телекоммуникационные системы и технологии',
+      logged: false,
+      unlogged: true,
+      user: '',
+    };
   }
 }

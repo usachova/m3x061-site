@@ -24,13 +24,23 @@ body {
 
 header {
     background: #E6E6E6;
-    text-align: center;
-    position: center;
+    /*text-align: center;*/
+    /*position: center;*/
+}
+
+header button {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+header p {
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 h1 {
     font-family: Snell Roundhand, serif;
-    font-size: 200%;
+    font-size: 150%;
     text-align: center;
     text-transform: uppercase;
 }

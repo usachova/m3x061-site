@@ -1,3 +1,9 @@
 <header id="header">
-  <h1>{{title}}️</h1>
+  {{#if unlogged}}
+    <button>авторизоваться</button>
+  {{/if}}
+  {{#if logged}}
+    <p>вы вошли как: {{ user }}</p>
+  {{/if}}
+  <h1>{{ title }}️</h1>
 </header>
