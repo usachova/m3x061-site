@@ -1,9 +1,19 @@
 import { Controller, Get, Render } from '@nestjs/common';
 import { AppService } from './app.service';
+import { SubjectService } from './services/subject.service';
+import { DeadlineTableService } from './services/deadlinetable.service';
+import {
+  Subject as SubjectModel,
+  DeadlineTable as DeadlineTableModel,
+} from '@prisma/client';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly appService: AppService,
+    private readonly subjectService: SubjectService,
+    private readonly deadlineTableService: DeadlineTableService,
+  ) {}
 
   @Get()
   @Render('index.hbs')
