@@ -8,12 +8,11 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Subject {
   id            Int             @id @default(autoincrement())
-  name          String
+  name          String @unique
   gradeType     String
   lecturerName  String
   lecturerLink  String?
