@@ -4,6 +4,9 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 import * as hbs from 'hbs';
 import { LoggingInterceptor } from './logging.interceptor';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { SubjectModule } from './subject/subject.module';
+import { DeadlinetableModule } from './deadlinetable/deadlinetable.module';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -15,6 +18,17 @@ async function bootstrap() {
   hbs.registerPartials(join(__dirname, '..', '/views/partials'));
 
   app.useGlobalInterceptors(new LoggingInterceptor());
+
+  const config = new DocumentBuilder()
+    .setTitle('m33061')
+    .setDescription('m33061-site')
+    .setVersion('1.0')
+    .addTag('site')
+    .build();
+  const document = SwaggerModule.createDocument(app, config, {
+    include: [SubjectModule, DeadlinetableModule],
+  });
+  SwaggerModule.setup('api', app, document);
 
   const port = process.env.PORT || 4242;
   await app.listen(port);
