@@ -6,9 +6,11 @@ import { LoggingInterceptor } from './logging.interceptor';
 import { PrismaService } from './services/prisma.service';
 import { SubjectService } from './services/subject.service';
 import { DeadlineTableService } from './services/deadlinetable.service';
+import { SubjectModule } from './subject/subject.module';
+import { DeadlinetableModule } from './deadlinetable/deadlinetable.module';
 
 @Module({
-  imports: [],
+  imports: [SubjectModule, DeadlinetableModule],
   controllers: [AppController],
   providers: [
     AppService,
