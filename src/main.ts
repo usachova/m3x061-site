@@ -7,6 +7,7 @@ import { LoggingInterceptor } from './logging.interceptor';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { SubjectModule } from './subject/subject.module';
 import { DeadlinetableModule } from './deadlinetable/deadlinetable.module';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -29,6 +30,8 @@ async function bootstrap() {
     include: [SubjectModule, DeadlinetableModule],
   });
   SwaggerModule.setup('api', app, document);
+
+  app.useGlobalPipes(new ValidationPipe());
 
   const port = process.env.PORT || 4242;
   await app.listen(port);

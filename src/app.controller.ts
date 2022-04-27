@@ -1,7 +1,7 @@
 import { Controller, Get, Render } from '@nestjs/common';
 import { AppService } from './app.service';
-import { SubjectService } from './services/subject.service';
-import { DeadlineTableService } from './services/deadlinetable.service';
+import { SubjectService } from './subject/subject.service';
+import { DeadlineTableService } from './deadlinetable/deadlinetable.service';
 import {
   Subject as SubjectModel,
   DeadlineTable as DeadlineTableModel,

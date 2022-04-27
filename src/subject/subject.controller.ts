@@ -6,11 +6,14 @@ import {
   Controller,
   Body,
   NotImplementedException,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
-import { SubjectService } from './subject.service';
 import { Subject } from '@prisma/client';
 import { DeadlineTable } from '@prisma/client';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { SubjectService } from './subject.service';
+import { SubjectDto } from './subject.dto';
 
 @Controller('subject')
 export class SubjectController {
@@ -20,7 +23,7 @@ export class SubjectController {
     summary: 'get all subjects',
   })
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: 'success',
   })
   @ApiResponse({
@@ -29,14 +32,15 @@ export class SubjectController {
   })
   @Get('all')
   async getSubject(): Promise<Subject[]> {
-    throw new NotImplementedException();
+    const promise = this.subjectService.subjects({});
+    return promise;
   }
 
   @ApiOperation({
     summary: 'add subject',
   })
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: 'success',
   })
   @ApiResponse({
@@ -46,23 +50,20 @@ export class SubjectController {
   @Post('post')
   async post(
     @Body()
-    id: number,
-    subject: Subject,
-    gradeType: string,
-    lecturerName: string,
-    lecturerLink = '',
-    practiceName: string,
-    practiceLink = '',
-    DeadlineTable: DeadlineTable[],
-  ): Promise<void> {
-    throw new NotImplementedException();
+    subjectDTO: SubjectDto,
+  ) {
+    const subj = { subject: subjectDTO.subject };
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const promise = await this.subjectService.createSubject(subj);
+    return promise;
   }
 
   @ApiOperation({
     summary: 'delete subject',
   })
   @ApiResponse({
-    status: 201,
+    status: 200,
     description: 'success',
   })
   @ApiResponse({
@@ -70,7 +71,13 @@ export class SubjectController {
     description: 'forbidden',
   })
   @Delete(':id/delete')
-  async delete(@Param('id') id: number): Promise<void> {
-    throw new NotImplementedException();
+  async delete(@Param('id') id: number): Promise<any> {
+    const subj = await this.subjectService.subject({
+      id: Number(id),
+    });
+    if (subj == null) {
+      throw new HttpException('not found', HttpStatus.BAD_REQUEST);
+    }
+    return this.subjectService.deleteSubject({ id: Number(id) });
   }
 }

@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { DeadlinetableService } from './deadlinetable.service';
+import { DeadlineTableService } from './deadlinetable.service';
 import { DeadlinetableController } from './deadlinetable.controller';
+import { PrismaService } from '../prisma.service';
 
 @Module({
-  providers: [DeadlinetableService],
-  controllers: [DeadlinetableController]
+  providers: [DeadlineTableService, PrismaService],
+  controllers: [DeadlinetableController],
 })
 export class DeadlinetableModule {}
