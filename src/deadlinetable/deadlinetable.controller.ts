@@ -11,10 +11,11 @@ import {
 } from '@nestjs/common';
 import { DeadlineTableService } from './deadlinetable.service';
 import { DeadlineTable } from '@prisma/client';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { SubjectDto } from '../subject/subject.dto';
 import { DeadlineTableDto } from './deadlinetable.dto';
 
+@ApiTags('DeadlineTable')
 @Controller('deadlinetable')
 export class DeadlinetableController {
   constructor(private readonly deadlinetableService: DeadlineTableService) {}

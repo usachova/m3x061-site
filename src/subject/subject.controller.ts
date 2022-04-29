@@ -11,10 +11,11 @@ import {
 } from '@nestjs/common';
 import { Subject } from '@prisma/client';
 import { DeadlineTable } from '@prisma/client';
-import { ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { SubjectService } from './subject.service';
 import { SubjectDto } from './subject.dto';
 
+@ApiTags('Subject')
 @Controller('subject')
 export class SubjectController {
   constructor(private readonly subjectService: SubjectService) {}
