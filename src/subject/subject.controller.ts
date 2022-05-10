@@ -10,7 +10,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { Subject } from '@prisma/client';
-import { Deadline } from '@prisma/client';
+import { DeadlineTable } from '@prisma/client';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { SubjectService } from './subject.service';
 import { SubjectDto } from './subject.dto';

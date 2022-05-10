@@ -1,14 +1,14 @@
 import { Controller, Get, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 import { SubjectService } from './subject/subject.service';
-import { DeadlineService } from './Deadline/Deadline.service';
+import { DeadlineTableService } from './deadlinetable/deadlinetable.service';
 
 @Controller()
 export class AppController {
   constructor(
     private readonly appService: AppService,
     private readonly subjectService: SubjectService,
-    private readonly DeadlineService: DeadlineService,
+    private readonly deadlineTableService: DeadlineTableService,
   ) {}
 
   @Get()

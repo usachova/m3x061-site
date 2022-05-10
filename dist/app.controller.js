@@ -13,12 +13,12 @@ exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
 const subject_service_1 = require("./subject/subject.service");
-const Deadline_service_1 = require("./Deadline/Deadline.service");
+const deadlinetable_service_1 = require("./deadlinetable/deadlinetable.service");
 let AppController = class AppController {
-    constructor(appService, subjectService, DeadlineService) {
+    constructor(appService, subjectService, deadlineTableService) {
         this.appService = appService;
         this.subjectService = subjectService;
-        this.DeadlineService = DeadlineService;
+        this.deadlineTableService = deadlineTableService;
     }
     root() {
         return {
@@ -115,7 +115,7 @@ AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService,
         subject_service_1.SubjectService,
-        Deadline_service_1.DeadlineService])
+        deadlinetable_service_1.DeadlineTableService])
 ], AppController);
 exports.AppController = AppController;
 //# sourceMappingURL=app.controller.js.map

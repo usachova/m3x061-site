@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsNotEmpty } from 'class-validator';
 import internal from 'stream';
 
-export class DeadlineDto {
+export class DeadlineTableDto {
   @ApiProperty({
     description: 'Title',
     example: 'Хостинг веб-приложения на сервисе Heroku',

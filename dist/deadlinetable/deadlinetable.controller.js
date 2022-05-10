@@ -88,7 +88,7 @@ __decorate([
         description: 'forbidden',
     }),
     (0, common_1.Delete)(':id/delete'),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)

@@ -14,15 +14,15 @@ const core_1 = require("@nestjs/core");
 const logging_interceptor_1 = require("./logging.interceptor");
 const prisma_service_1 = require("./prisma.service");
 const subject_service_1 = require("./subject/subject.service");
-const Deadline_service_1 = require("./Deadline/Deadline.service");
+const deadlinetable_service_1 = require("./deadlinetable/deadlinetable.service");
 const subject_module_1 = require("./subject/subject.module");
-const Deadline_module_1 = require("./Deadline/Deadline.module");
+const deadlinetable_module_1 = require("./deadlinetable/deadlinetable.module");
 const http_exception_filter_1 = require("./http-exception.filter");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [subject_module_1.SubjectModule, Deadline_module_1.DeadlineModule],
+        imports: [subject_module_1.SubjectModule, deadlinetable_module_1.DeadlinetableModule],
         controllers: [app_controller_1.AppController],
         providers: [
             app_service_1.AppService,
@@ -30,7 +30,7 @@ AppModule = __decorate([
             { provide: core_1.APP_INTERCEPTOR, useClass: logging_interceptor_1.LoggingInterceptor },
             prisma_service_1.PrismaService,
             subject_service_1.SubjectService,
-            Deadline_service_1.DeadlineService,
+            deadlinetable_service_1.DeadlineTableService,
         ],
     })
 ], AppModule);

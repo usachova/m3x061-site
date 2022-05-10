@@ -18,10 +18,10 @@ model Subject {
   lecturerLink  String?
   practiceName  String
   practiceLink  String?
-  Deadline Deadline[]
+  DeadlineTable DeadlineTable[]
 }
 
-model Deadline {
+model DeadlineTable {
   id        Int     @id @default(autoincrement())
   subject   Subject @relation(fields: [subjectId], references: [id])
   subjectId Int

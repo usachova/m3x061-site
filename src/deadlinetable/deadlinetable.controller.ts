@@ -10,19 +10,19 @@ import {
   HttpStatus,
   ParseIntPipe,
 } from '@nestjs/common';
-import { DeadlineService } from './Deadline.service';
-import { Deadline } from '@prisma/client';
+import { DeadlineTableService } from './deadlinetable.service';
+import { DeadlineTable } from '@prisma/client';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { SubjectDto } from '../subject/subject.dto';
-import { DeadlineDto } from './Deadline.dto';
+import { DeadlineTableDto } from './deadlinetable.dto';
 
-@ApiTags('Deadline')
-@Controller('Deadline')
-export class DeadlineController {
-  constructor(private readonly DeadlineService: DeadlineService) {}
+@ApiTags('DeadlineTable')
+@Controller('deadlinetable')
+export class DeadlinetableController {
+  constructor(private readonly deadlinetableService: DeadlineTableService) {}
 
   @ApiOperation({
-    summary: 'get all Deadlines',
+    summary: 'get all deadlinetables',
   })
   @ApiResponse({
     status: 201,
@@ -33,12 +33,12 @@ export class DeadlineController {
     description: 'forbidden',
   })
   @Get('all')
-  async getDeadline(): Promise<Deadline[]> {
-    return this.DeadlineService.Deadlines({});
+  async getDeadlineTable(): Promise<DeadlineTable[]> {
+    return this.deadlinetableService.deadlineTables({});
   }
 
   @ApiOperation({
-    summary: 'add Deadline',
+    summary: 'add deadlinetable',
   })
   @ApiResponse({
     status: 201,
@@ -52,17 +52,17 @@ export class DeadlineController {
   @Post('post')
   async post(
     @Body()
-    DeadlineDTO: DeadlineDto,
+    deadlinetableDTO: DeadlineTableDto,
   ) {
-    const dl = { subject: DeadlineDTO.deadline };
+    const dl = { subject: deadlinetableDTO.deadline };
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const promise = this.DeadlineService.createDeadline(dl);
+    const promise = this.deadlinetableService.createDeadlineTable(dl);
     return promise;
   }
 
   @ApiOperation({
-    summary: 'delete Deadline',
+    summary: 'delete deadlinetable',
   })
   @ApiResponse({
     status: 201,
@@ -74,12 +74,12 @@ export class DeadlineController {
   })
   @Delete(':id/delete')
   async delete(@Param('id', ParseIntPipe) id: number): Promise<any> {
-    const subj = await this.DeadlineService.Deadline({
+    const subj = await this.deadlinetableService.DeadlineTable({
       id: Number(id),
     });
     if (subj == null) {
       throw new HttpException('not found', HttpStatus.BAD_REQUEST);
     }
-    return this.DeadlineService.deleteDeadline({ id: Number(id) });
+    return this.deadlinetableService.deleteDeadlineTable({ id: Number(id) });
   }
 }

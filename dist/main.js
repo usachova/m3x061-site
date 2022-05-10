@@ -7,7 +7,7 @@ const hbs = require("hbs");
 const logging_interceptor_1 = require("./logging.interceptor");
 const swagger_1 = require("@nestjs/swagger");
 const subject_module_1 = require("./subject/subject.module");
-const Deadline_module_1 = require("./Deadline/Deadline.module");
+const deadlinetable_module_1 = require("./deadlinetable/deadlinetable.module");
 const common_1 = require("@nestjs/common");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
@@ -23,7 +23,7 @@ async function bootstrap() {
         .addTag('site')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config, {
-        include: [subject_module_1.SubjectModule, Deadline_module_1.DeadlineModule],
+        include: [subject_module_1.SubjectModule, deadlinetable_module_1.DeadlinetableModule],
     });
     swagger_1.SwaggerModule.setup('api', app, document);
     app.useGlobalPipes(new common_1.ValidationPipe());

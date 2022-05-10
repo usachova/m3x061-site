@@ -1,11 +1,11 @@
 import { AppService } from './app.service';
 import { SubjectService } from './subject/subject.service';
-import { DeadlineService } from './Deadline/Deadline.service';
+import { DeadlineTableService } from './deadlinetable/deadlinetable.service';
 export declare class AppController {
     private readonly appService;
     private readonly subjectService;
-    private readonly DeadlineService;
-    constructor(appService: AppService, subjectService: SubjectService, DeadlineService: DeadlineService);
+    private readonly deadlineTableService;
+    constructor(appService: AppService, subjectService: SubjectService, deadlineTableService: DeadlineTableService);
     root(): {
         title: string;
         logged: boolean;
