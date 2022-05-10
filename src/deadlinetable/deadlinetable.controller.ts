@@ -8,6 +8,7 @@ import {
   NotImplementedException,
   HttpException,
   HttpStatus,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { DeadlineTableService } from './deadlinetable.service';
 import { DeadlineTable } from '@prisma/client';
@@ -72,7 +73,7 @@ export class DeadlinetableController {
     description: 'forbidden',
   })
   @Delete(':id/delete')
-  async delete(@Param('id') id: number): Promise<any> {
+  async delete(@Param('id', ParseIntPipe) id: number): Promise<any> {
     const subj = await this.deadlinetableService.DeadlineTable({
       id: Number(id),
     });
