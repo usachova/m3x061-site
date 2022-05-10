@@ -6,7 +6,7 @@ import * as hbs from 'hbs';
 import { LoggingInterceptor } from './logging.interceptor';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { SubjectModule } from './subject/subject.module';
-import { DeadlinetableModule } from './deadlinetable/deadlinetable.module';
+import { DeadlineModule } from './Deadline/Deadline.module';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
@@ -27,7 +27,7 @@ async function bootstrap() {
     .addTag('site')
     .build();
   const document = SwaggerModule.createDocument(app, config, {
-    include: [SubjectModule, DeadlinetableModule],
+    include: [SubjectModule, DeadlineModule],
   });
   SwaggerModule.setup('api', app, document);
 

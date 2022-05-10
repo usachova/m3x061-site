@@ -5,13 +5,13 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor } from './logging.interceptor';
 import { PrismaService } from './prisma.service';
 import { SubjectService } from './subject/subject.service';
-import { DeadlineTableService } from './deadlinetable/deadlinetable.service';
+import { DeadlineService } from './Deadline/Deadline.service';
 import { SubjectModule } from './subject/subject.module';
-import { DeadlinetableModule } from './deadlinetable/deadlinetable.module';
+import { DeadlineModule } from './Deadline/Deadline.module';
 import { HttpExceptionFilter } from './http-exception.filter';
 
 @Module({
-  imports: [SubjectModule, DeadlinetableModule],
+  imports: [SubjectModule, DeadlineModule],
   controllers: [AppController],
   providers: [
     AppService,
@@ -19,7 +19,7 @@ import { HttpExceptionFilter } from './http-exception.filter';
     { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
     PrismaService,
     SubjectService,
-    DeadlineTableService,
+    DeadlineService,
   ],
 })
 export class AppModule {}
