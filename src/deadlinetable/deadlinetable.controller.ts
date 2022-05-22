@@ -9,10 +9,11 @@ import {
   HttpException,
   HttpStatus,
   ParseIntPipe,
+  Query,
 } from '@nestjs/common';
 import { DeadlineTableService } from './deadlinetable.service';
 import { DeadlineTable } from '@prisma/client';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { SubjectDto } from '../subject/subject.dto';
 import { DeadlineTableDto } from './deadlinetable.dto';
 
@@ -35,6 +36,33 @@ export class DeadlinetableController {
   @Get('all')
   async getDeadlineTable(): Promise<DeadlineTable[]> {
     return this.deadlinetableService.deadlineTables({});
+  }
+
+  @ApiOperation({
+    summary: 'get all deadlinetables',
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'success',
+  })
+  @ApiResponse({
+    status: 403,
+    description: 'forbidden',
+  })
+  @ApiQuery({
+    name: 'page',
+    description: 'Get paginated deadline tables.',
+    type: 'number',
+  })
+  @Get('some')
+  async getSomeDeadlineTable(
+    @Query('page', ParseIntPipe) page: number,
+  ): Promise<DeadlineTable[]> {
+    const pageSize = 5;
+    return this.deadlinetableService.deadlineTables({
+      skip: pageSize * page,
+      take: page,
+    });
   }
 
   @ApiOperation({

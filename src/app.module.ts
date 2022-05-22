@@ -9,9 +9,10 @@ import { DeadlineTableService } from './deadlinetable/deadlinetable.service';
 import { SubjectModule } from './subject/subject.module';
 import { DeadlinetableModule } from './deadlinetable/deadlinetable.module';
 import { HttpExceptionFilter } from './http-exception.filter';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [SubjectModule, DeadlinetableModule],
+  imports: [SubjectModule, DeadlinetableModule, AuthModule],
   controllers: [AppController],
   providers: [
     AppService,

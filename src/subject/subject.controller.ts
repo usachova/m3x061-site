@@ -53,10 +53,10 @@ export class SubjectController {
     @Body()
     subjectDTO: SubjectDto,
   ) {
-    const subj = { subject: subjectDTO.subject };
+    const subj = { subject: subjectDTO };
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const promise = await this.subjectService.createSubject(subj);
+    const promise = await this.subjectService.createSubject(subj.subject);
     return promise;
   }
 

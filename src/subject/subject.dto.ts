@@ -6,7 +6,13 @@ export class SubjectDto {
     description: 'Name',
     example: 'WEB-программирование',
   })
-  readonly subject: string;
+  readonly name: string;
+
+  @ApiProperty({
+    description: 'GradeType',
+    example: 'экзамен',
+  })
+  readonly gradeType: string;
 
   @ApiProperty({
     description: 'LecturerName',

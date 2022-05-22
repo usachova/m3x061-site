@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { Subject, Prisma } from '@prisma/client';
+import { SubjectDto } from './subject.dto';
 
 @Injectable()
 export class SubjectService {
@@ -31,10 +32,14 @@ export class SubjectService {
     });
   }
 
-  async createSubject(data: Prisma.SubjectCreateInput): Promise<Subject> {
-    return this.prisma.subject.create({
-      data,
-    });
+  // async createSubject(data: Prisma.SubjectCreateInput): Promise<Subject> {
+  //   return this.prisma.subject.create({
+  //     data: data,
+  //   });
+  // }
+
+  async createSubject(subject: SubjectDto) {
+    return this.prisma.subject.create({ data: subject });
   }
 
   async updateSubject(params: {

@@ -18,11 +18,12 @@ const deadlinetable_service_1 = require("./deadlinetable/deadlinetable.service")
 const subject_module_1 = require("./subject/subject.module");
 const deadlinetable_module_1 = require("./deadlinetable/deadlinetable.module");
 const http_exception_filter_1 = require("./http-exception.filter");
+const auth_module_1 = require("./auth/auth.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [subject_module_1.SubjectModule, deadlinetable_module_1.DeadlinetableModule],
+        imports: [subject_module_1.SubjectModule, deadlinetable_module_1.DeadlinetableModule, auth_module_1.AuthModule],
         controllers: [app_controller_1.AppController],
         providers: [
             app_service_1.AppService,
