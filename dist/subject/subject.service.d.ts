@@ -1,5 +1,6 @@
 import { PrismaService } from '../prisma.service';
 import { Subject, Prisma } from '@prisma/client';
+import { SubjectDto } from './subject.dto';
 export declare class SubjectService {
     private prisma;
     constructor(prisma: PrismaService);
@@ -11,7 +12,7 @@ export declare class SubjectService {
         where?: Prisma.SubjectWhereInput;
         orderBy?: Prisma.SubjectOrderByWithRelationInput;
     }): Promise<Subject[]>;
-    createSubject(data: Prisma.SubjectCreateInput): Promise<Subject>;
+    createSubject(subject: SubjectDto): Promise<Subject>;
     updateSubject(params: {
         where: Prisma.SubjectWhereUniqueInput;
         data: Prisma.SubjectUpdateInput;

@@ -26,8 +26,8 @@ let SubjectController = class SubjectController {
         return promise;
     }
     async post(subjectDTO) {
-        const subj = { subject: subjectDTO.subject };
-        const promise = await this.subjectService.createSubject(subj);
+        const subj = { subject: subjectDTO };
+        const promise = await this.subjectService.createSubject(subj.subject);
         return promise;
     }
     async delete(id) {

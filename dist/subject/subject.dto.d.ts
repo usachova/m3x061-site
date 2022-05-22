@@ -1,5 +1,6 @@
 export declare class SubjectDto {
-    readonly subject: string;
+    readonly name: string;
+    readonly gradeType: string;
     readonly lecturerName: string;
     readonly lecturerLink: string;
     readonly practiceName: string;

@@ -24,6 +24,13 @@ let DeadlinetableController = class DeadlinetableController {
     async getDeadlineTable() {
         return this.deadlinetableService.deadlineTables({});
     }
+    async getSomeDeadlineTable(page) {
+        const pageSize = 5;
+        return this.deadlinetableService.deadlineTables({
+            skip: pageSize * page,
+            take: page,
+        });
+    }
     async post(deadlinetableDTO) {
         const dl = { subject: deadlinetableDTO.deadline };
         const promise = this.deadlinetableService.createDeadlineTable(dl);
@@ -56,6 +63,29 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], DeadlinetableController.prototype, "getDeadlineTable", null);
+__decorate([
+    (0, swagger_1.ApiOperation)({
+        summary: 'get all deadlinetables',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: 'success',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 403,
+        description: 'forbidden',
+    }),
+    (0, swagger_1.ApiQuery)({
+        name: 'page',
+        description: 'Get paginated deadline tables.',
+        type: 'number',
+    }),
+    (0, common_1.Get)('some'),
+    __param(0, (0, common_1.Query)('page', common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], DeadlinetableController.prototype, "getSomeDeadlineTable", null);
 __decorate([
     (0, swagger_1.ApiOperation)({
         summary: 'add deadlinetable',

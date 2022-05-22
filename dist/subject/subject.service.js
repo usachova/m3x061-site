@@ -31,10 +31,8 @@ let SubjectService = class SubjectService {
             orderBy,
         });
     }
-    async createSubject(data) {
-        return this.prisma.subject.create({
-            data,
-        });
+    async createSubject(subject) {
+        return this.prisma.subject.create({ data: subject });
     }
     async updateSubject(params) {
         const { where, data } = params;

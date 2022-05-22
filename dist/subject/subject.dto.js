@@ -20,7 +20,14 @@ __decorate([
         example: 'WEB-программирование',
     }),
     __metadata("design:type", String)
-], SubjectDto.prototype, "subject", void 0);
+], SubjectDto.prototype, "name", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        description: 'GradeType',
+        example: 'экзамен',
+    }),
+    __metadata("design:type", String)
+], SubjectDto.prototype, "gradeType", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         description: 'LecturerName',
