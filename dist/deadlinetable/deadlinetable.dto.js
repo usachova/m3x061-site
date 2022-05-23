@@ -16,6 +16,13 @@ class DeadlineTableDto {
 }
 __decorate([
     (0, swagger_1.ApiProperty)({
+        description: 'SubjectId',
+        example: 1,
+    }),
+    __metadata("design:type", Number)
+], DeadlineTableDto.prototype, "subjectId", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
         description: 'Title',
         example: 'Хостинг веб-приложения на сервисе Heroku',
     }),
@@ -24,18 +31,18 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)({
         description: 'MinScore',
-        example: '5',
+        example: 5,
     }),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], DeadlineTableDto.prototype, "minScore", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         description: 'maxScore',
-        example: '15',
+        example: 15,
     }),
     (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], DeadlineTableDto.prototype, "maxScore", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({

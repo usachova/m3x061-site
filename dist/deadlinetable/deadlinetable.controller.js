@@ -28,12 +28,12 @@ let DeadlinetableController = class DeadlinetableController {
         const pageSize = 5;
         return this.deadlinetableService.deadlineTables({
             skip: pageSize * page,
-            take: page,
+            take: pageSize,
         });
     }
     async post(deadlinetableDTO) {
-        const dl = { subject: deadlinetableDTO.deadline };
-        const promise = this.deadlinetableService.createDeadlineTable(dl);
+        const dl = { deadlinetable: deadlinetableDTO };
+        const promise = this.deadlinetableService.createDeadlineTable(dl.deadlinetable);
         return promise;
     }
     async delete(id) {
@@ -98,7 +98,6 @@ __decorate([
         status: 403,
         description: 'forbidden',
     }),
-    (0, common_1.Post)('post'),
     (0, common_1.Post)('post'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),

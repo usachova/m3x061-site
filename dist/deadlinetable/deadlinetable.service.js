@@ -31,10 +31,8 @@ let DeadlineTableService = class DeadlineTableService {
             orderBy,
         });
     }
-    async createDeadlineTable(data) {
-        return this.prisma.deadlineTable.create({
-            data,
-        });
+    async createDeadlineTable(deadlineTable) {
+        return this.prisma.deadlineTable.create({ data: deadlineTable });
     }
     async updateDeadlineTable(params) {
         const { where, data } = params;

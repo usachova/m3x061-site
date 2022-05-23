@@ -1,5 +1,6 @@
 import { PrismaService } from '../prisma.service';
 import { DeadlineTable, Prisma } from '@prisma/client';
+import { DeadlineTableDto } from './deadlinetable.dto';
 export declare class DeadlineTableService {
     private prisma;
     constructor(prisma: PrismaService);
@@ -11,7 +12,7 @@ export declare class DeadlineTableService {
         where?: Prisma.DeadlineTableWhereInput;
         orderBy?: Prisma.DeadlineTableOrderByWithRelationInput;
     }): Promise<DeadlineTable[]>;
-    createDeadlineTable(data: Prisma.DeadlineTableCreateInput): Promise<DeadlineTable>;
+    createDeadlineTable(deadlineTable: DeadlineTableDto): Promise<DeadlineTable>;
     updateDeadlineTable(params: {
         where: Prisma.DeadlineTableWhereUniqueInput;
         data: Prisma.DeadlineTableUpdateInput;
