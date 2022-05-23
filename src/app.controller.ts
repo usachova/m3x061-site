@@ -76,4 +76,8 @@ export class AppController {
       user: '',
     };
   }
+
+  getHello() {
+    return undefined;
+  }
 }

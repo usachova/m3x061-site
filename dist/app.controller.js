@@ -68,6 +68,9 @@ let AppController = class AppController {
             user: '',
         };
     }
+    getHello() {
+        return undefined;
+    }
 };
 __decorate([
     (0, common_1.Get)(),

@@ -61,7 +61,7 @@ export class DeadlinetableController {
     const pageSize = 5;
     return this.deadlinetableService.deadlineTables({
       skip: pageSize * page,
-      take: page,
+      take: pageSize,
     });
   }
 
@@ -77,15 +77,16 @@ export class DeadlinetableController {
     description: 'forbidden',
   })
   @Post('post')
-  @Post('post')
   async post(
     @Body()
     deadlinetableDTO: DeadlineTableDto,
   ) {
-    const dl = { subject: deadlinetableDTO.deadline };
+    const dl = { deadlinetable: deadlinetableDTO };
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const promise = this.deadlinetableService.createDeadlineTable(dl);
+    const promise = this.deadlinetableService.createDeadlineTable(
+      dl.deadlinetable,
+    );
     return promise;
   }
 

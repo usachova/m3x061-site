@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { DeadlineTable, Prisma } from '@prisma/client';
+import { DeadlineTableDto } from './deadlinetable.dto';
 
 @Injectable()
 export class DeadlineTableService {
@@ -31,12 +32,18 @@ export class DeadlineTableService {
     });
   }
 
-  async createDeadlineTable(
-    data: Prisma.DeadlineTableCreateInput,
-  ): Promise<DeadlineTable> {
-    return this.prisma.deadlineTable.create({
-      data,
-    });
+  // async createDeadlineTable(
+  //   data: Prisma.DeadlineTableCreateInput,
+  // ): Promise<DeadlineTable> {
+  //   return this.prisma.deadlineTable.create({
+  //     data,
+  //   });
+  // }
+
+  async createDeadlineTable(deadlineTable: DeadlineTableDto) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return this.prisma.deadlineTable.create({ data: deadlineTable });
   }
 
   async updateDeadlineTable(params: {

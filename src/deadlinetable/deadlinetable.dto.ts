@@ -4,6 +4,12 @@ import internal from 'stream';
 
 export class DeadlineTableDto {
   @ApiProperty({
+    description: 'SubjectId',
+    example: 1,
+  })
+  readonly subjectId: number;
+
+  @ApiProperty({
     description: 'Title',
     example: 'Хостинг веб-приложения на сервисе Heroku',
   })
@@ -11,17 +17,17 @@ export class DeadlineTableDto {
 
   @ApiProperty({
     description: 'MinScore',
-    example: '5',
+    example: 5,
   })
   @IsNotEmpty()
-  readonly minScore: string;
+  readonly minScore: number;
 
   @ApiProperty({
     description: 'maxScore',
-    example: '15',
+    example: 15,
   })
   @IsNotEmpty()
-  readonly maxScore: string;
+  readonly maxScore: number;
 
   @ApiProperty({
     description: 'Deadline',

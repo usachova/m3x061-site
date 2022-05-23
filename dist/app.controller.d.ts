@@ -42,4 +42,5 @@ export declare class AppController {
         unlogged: boolean;
         user: string;
     };
+    getHello(): any;
 }
