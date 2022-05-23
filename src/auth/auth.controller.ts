@@ -47,20 +47,11 @@ export class AuthController {
     status: 400,
     description: 'Bad request',
   })
-  @ApiResponse({
-    status: 403,
-    description: 'Not admin',
-  })
   @Get('users')
-  //@Roles('admin')
   async users(@Req() request: Request) {
     const jwt = request.cookies['jwt'];
     const role = (await this.jwtService.verifyAsync(jwt))['role'];
-    if (role == 'admin') {
-      return this.authService.users();
-    } else {
-      throw new ForbiddenException('Only admin can call this method');
-    }
+    return this.authService.users();
   }
 
   @ApiOperation({
@@ -99,7 +90,7 @@ export class AuthController {
     @Body() user: UserDto,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const loggedUser = await this.authService.login(user.login);
+    const loggedUser = await this.authService.login(user.email);
 
     if (
       !loggedUser ||
@@ -137,18 +128,18 @@ export class AuthController {
   })
   @Post('register')
   async register(@Body() user: UserDto) {
-    if (await this.authService.login(user.login)) {
+    if (await this.authService.login(user.email)) {
       throw new BadRequestException('User already exists');
     }
 
     return {
       message: 'User successfully registered',
-      user: await this.authService.register(user.login, user.password),
+      user: await this.authService.register(user.email, user.password),
     };
   }
 
   @ApiOperation({
-    summary: 'Delete user from DataBase',
+    summary: 'Delete user',
   })
   @ApiQuery({
     name: 'id',
