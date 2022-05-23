@@ -49,26 +49,7 @@ export class AuthController {
   })
   @Get('users')
   async users(@Req() request: Request) {
-    const jwt = request.cookies['jwt'];
-    const role = (await this.jwtService.verifyAsync(jwt))['role'];
     return this.authService.users();
-  }
-
-  @ApiOperation({
-    summary: 'Get user token information by token stored in cookies',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'Information provided',
-  })
-  @ApiResponse({
-    status: 400,
-    description: 'Bad request',
-  })
-  @Get('user')
-  async user(@Req() request: Request) {
-    const jwt = request.cookies['jwt'];
-    return await this.jwtService.verifyAsync(jwt);
   }
 
   @ApiOperation({
@@ -128,9 +109,9 @@ export class AuthController {
   })
   @Post('register')
   async register(@Body() user: UserDto) {
-    // if (await this.authService.login(user.email)) {
-    //   throw new BadRequestException('User already exists');
-    // }
+    if (await this.authService.login(user.login)) {
+      throw new BadRequestException('User already exists');
+    }
     return {
       message: 'User successfully registered',
       user: await this.authService.register(user.login, user.password),
