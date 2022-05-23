@@ -42,5 +42,11 @@ export declare class AppController {
         unlogged: boolean;
         user: string;
     };
+    taylor(): {
+        title: string;
+        logged: boolean;
+        unlogged: boolean;
+        user: string;
+    };
     getHello(): any;
 }

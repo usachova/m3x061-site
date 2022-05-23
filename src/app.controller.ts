@@ -77,6 +77,17 @@ export class AppController {
     };
   }
 
+  @Get('taylor')
+  @Render('taylor.hbs')
+  taylor() {
+    return {
+      title: 'тейлор',
+      logged: false,
+      unlogged: true,
+      user: '',
+    };
+  }
+
   getHello() {
     return undefined;
   }

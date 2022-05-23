@@ -68,6 +68,14 @@ let AppController = class AppController {
             user: '',
         };
     }
+    taylor() {
+        return {
+            title: 'тейлор',
+            logged: false,
+            unlogged: true,
+            user: '',
+        };
+    }
     getHello() {
         return undefined;
     }
@@ -114,6 +122,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], AppController.prototype, "telecom", null);
+__decorate([
+    (0, common_1.Get)('taylor'),
+    (0, common_1.Render)('taylor.hbs'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "taylor", null);
 AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService,

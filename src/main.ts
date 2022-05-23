@@ -29,7 +29,7 @@ async function bootstrap() {
     .addTag('site')
     .build();
   const document = SwaggerModule.createDocument(app, config, {
-    include: [SubjectModule, DeadlinetableModule, AuthModule, UserModule],
+    include: [SubjectModule, DeadlinetableModule, AuthModule],
   });
   SwaggerModule.setup('api', app, document);
 

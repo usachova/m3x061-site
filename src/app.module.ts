@@ -11,9 +11,16 @@ import { DeadlinetableModule } from './deadlinetable/deadlinetable.module';
 import { HttpExceptionFilter } from './http-exception.filter';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
-  imports: [SubjectModule, DeadlinetableModule, AuthModule, UserModule],
+  imports: [
+    SubjectModule,
+    DeadlinetableModule,
+    AuthModule,
+    UserModule,
+    ChatModule,
+  ],
   controllers: [AppController],
   providers: [
     AppService,

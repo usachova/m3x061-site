@@ -20,11 +20,18 @@ const deadlinetable_module_1 = require("./deadlinetable/deadlinetable.module");
 const http_exception_filter_1 = require("./http-exception.filter");
 const auth_module_1 = require("./auth/auth.module");
 const user_module_1 = require("./user/user.module");
+const chat_module_1 = require("./chat/chat.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [subject_module_1.SubjectModule, deadlinetable_module_1.DeadlinetableModule, auth_module_1.AuthModule, user_module_1.UserModule],
+        imports: [
+            subject_module_1.SubjectModule,
+            deadlinetable_module_1.DeadlinetableModule,
+            auth_module_1.AuthModule,
+            user_module_1.UserModule,
+            chat_module_1.ChatModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [
             app_service_1.AppService,

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>тей</title>
+  <link rel="stylesheet" href="../css/style_page.css">
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/usachova/ITMO-WEB/main/pics/icon.png">
+  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+  <script src="js/chat.js"></script>
+</head>
+<body>
+{{> header }}
+
+{{> nav }}
+
+<main id="main">
+  <img src="https://raw.githubusercontent.com/usachova/ITMO-WEB/main/pics/taylor/taylor-1.jpg"
+           width="250" height="250" title="тейлор-груша" alt="села сидит) ну пусть сидит">
+  <img src="https://raw.githubusercontent.com/usachova/ITMO-WEB/main/pics/taylor/taylor-2.jpg"
+       width="250" height="250" title="тейлор-шар" alt="в коробке)">
+  <img src="https://raw.githubusercontent.com/usachova/ITMO-WEB/main/pics/taylor/taylor-3.jpg"
+       width="250" height="250" title="тейлор+наруто" alt="смотрит наруто)">
+  <br>
+  <div>
+    <ul id="messages"></ul>
+  </div>
+  <div>
+<!--    <input type="text" placeholder="введите текст"></input>-->
+    <input id="message" type="text" spellcheck="false" />
+    <button onclick="send()">оставить комментарий</button>
+  </div>
+</main>
+</body>
+</html>
