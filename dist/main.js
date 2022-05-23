@@ -9,6 +9,8 @@ const swagger_1 = require("@nestjs/swagger");
 const subject_module_1 = require("./subject/subject.module");
 const deadlinetable_module_1 = require("./deadlinetable/deadlinetable.module");
 const common_1 = require("@nestjs/common");
+const user_module_1 = require("./user/user.module");
+const auth_module_1 = require("./auth/auth.module");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.useStaticAssets((0, path_1.join)(__dirname, '..', 'public'));
@@ -23,7 +25,7 @@ async function bootstrap() {
         .addTag('site')
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config, {
-        include: [subject_module_1.SubjectModule, deadlinetable_module_1.DeadlinetableModule],
+        include: [subject_module_1.SubjectModule, deadlinetable_module_1.DeadlinetableModule, auth_module_1.AuthModule, user_module_1.UserModule],
     });
     swagger_1.SwaggerModule.setup('api', app, document);
     app.useGlobalPipes(new common_1.ValidationPipe());

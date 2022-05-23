@@ -21,7 +21,7 @@ export class UserController {
   })
   @Get('users')
   @Render('users')
-  showUsers() {
+  showAllUsers() {
     return;
   }
 }

@@ -8,6 +8,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { SubjectModule } from './subject/subject.module';
 import { DeadlinetableModule } from './deadlinetable/deadlinetable.module';
 import { ValidationPipe } from '@nestjs/common';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -27,7 +29,7 @@ async function bootstrap() {
     .addTag('site')
     .build();
   const document = SwaggerModule.createDocument(app, config, {
-    include: [SubjectModule, DeadlinetableModule],
+    include: [SubjectModule, DeadlinetableModule, AuthModule, UserModule],
   });
   SwaggerModule.setup('api', app, document);
 

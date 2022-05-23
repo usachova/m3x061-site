@@ -18,12 +18,10 @@ model Subject {
   lecturerLink  String?
   practiceName  String
   practiceLink  String?
-//  DeadlineTable DeadlineTable[]
 }
 
 model DeadlineTable {
   id        Int     @id @default(autoincrement())
-//  subject   Subject @relation(fields: [subjectId], references: [id])
   subjectId String
   title     String
   minScore  String?

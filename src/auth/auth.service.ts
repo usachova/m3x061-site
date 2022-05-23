@@ -19,7 +19,6 @@ export class AuthService {
       data: {
         login: login,
         password: await bcrypt.hash(password, 42),
-        // role: email == 'danya240926@gmail.com' ? 'admin' : 'public',
       },
     });
   }

@@ -26,12 +26,9 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { Response, Request } from 'express';
 import { UserDto } from '../user/user.dto';
-// import { RolesGuard } from './roles.guard';
-// import { Roles } from './roles.decorator';
 
 @ApiTags('Auth')
 @UseInterceptors(new LoggingInterceptor())
-//@UseGuards(RolesGuard)
 @Controller('auth')
 export class AuthController {
   constructor(
