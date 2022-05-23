@@ -90,7 +90,7 @@ export class AuthController {
     @Body() user: UserDto,
     @Res({ passthrough: true }) response: Response,
   ) {
-    const loggedUser = await this.authService.login(user.email);
+    const loggedUser = await this.authService.login(user.login);
 
     if (
       !loggedUser ||
@@ -128,13 +128,12 @@ export class AuthController {
   })
   @Post('register')
   async register(@Body() user: UserDto) {
-    if (await this.authService.login(user.email)) {
-      throw new BadRequestException('User already exists');
-    }
-
+    // if (await this.authService.login(user.email)) {
+    //   throw new BadRequestException('User already exists');
+    // }
     return {
       message: 'User successfully registered',
-      user: await this.authService.register(user.email, user.password),
+      user: await this.authService.register(user.login, user.password),
     };
   }
 

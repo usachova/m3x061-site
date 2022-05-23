@@ -18,7 +18,7 @@ export class AuthService {
     return this.prisma.user.create({
       data: {
         login: login,
-        password: await bcrypt.hash(password, 42),
+        password: await bcrypt.hash(password, 8),
       },
     });
   }
