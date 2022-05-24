@@ -37,34 +37,43 @@ export class AuthController {
   ) {}
 
   @ApiOperation({
-    summary: 'Get all user stored in DataBase',
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'Users provided',
-  })
-  @ApiResponse({
-    status: 400,
-    description: 'Bad request',
-  })
-  @Get('users')
-  async users(@Req() request: Request) {
-    return this.authService.users();
-  }
-
-  @ApiOperation({
-    summary: 'Found user from database and return if needed',
+    summary: 'register user',
   })
   @ApiBody({
     type: UserDto,
   })
   @ApiResponse({
     status: 200,
-    description: 'User logged in',
+    description: 'success',
   })
   @ApiResponse({
     status: 400,
-    description: 'Bad request',
+    description: 'bad request',
+  })
+  @Post('register')
+  async register(@Body() user: UserDto) {
+    if (await this.authService.login(user.login)) {
+      throw new BadRequestException('User already exists');
+    }
+    return {
+      message: 'user registered',
+      user: await this.authService.register(user.login, user.password),
+    };
+  }
+
+  @ApiOperation({
+    summary: 'login user',
+  })
+  @ApiBody({
+    type: UserDto,
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'success',
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'bad request',
   })
   @Post('login')
   async login(
@@ -87,39 +96,29 @@ export class AuthController {
     response.cookie('jwt', jwt, { httpOnly: true });
 
     return {
-      message: 'User successfully login',
       user: user,
       jwt: jwt,
     };
   }
 
   @ApiOperation({
-    summary: 'Register user and add it to DataBase',
-  })
-  @ApiBody({
-    type: UserDto,
+    summary: 'get all users',
   })
   @ApiResponse({
     status: 200,
-    description: 'User created',
+    description: 'success',
   })
   @ApiResponse({
     status: 400,
-    description: 'Bad request',
+    description: 'bad request',
   })
-  @Post('register')
-  async register(@Body() user: UserDto) {
-    if (await this.authService.login(user.login)) {
-      throw new BadRequestException('User already exists');
-    }
-    return {
-      message: 'User successfully registered',
-      user: await this.authService.register(user.login, user.password),
-    };
+  @Get('users')
+  async users(@Req() request: Request) {
+    return this.authService.users();
   }
 
   @ApiOperation({
-    summary: 'Delete user',
+    summary: 'delete user',
   })
   @ApiQuery({
     name: 'id',
@@ -127,16 +126,16 @@ export class AuthController {
   })
   @ApiResponse({
     status: 200,
-    description: 'Deleted',
+    description: 'success',
   })
   @ApiResponse({
     status: 400,
-    description: 'Bad request',
+    description: 'bad request',
   })
   @Delete('user')
   async delete(@Query('id', ParseIntPipe) id: number) {
     return {
-      message: 'User successfully deleted',
+      message: 'user deleted',
       user: await this.authService.delete(id),
     };
   }

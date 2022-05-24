@@ -12,16 +12,16 @@ import { LoggingInterceptor } from '../logging.interceptor';
 @UseInterceptors(new LoggingInterceptor())
 @Controller()
 export class UserController {
-  // @ApiOperation({
-  //   summary: 'Get page where you can load user',
-  // })
-  // @ApiResponse({
-  //   status: 200,
-  //   description: 'OK',
-  // })
-  // @Get('users')
-  // @Render('users')
-  // showAllUsers() {
-  //   return;
-  // }
+  @ApiOperation({
+    summary: 'get user',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'OK',
+  })
+  @Get('users')
+  @Render('users')
+  getUser() {
+    return;
+  }
 }
