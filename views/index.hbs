@@ -70,9 +70,23 @@
       <li>Шарифов Сардорбек Дилшод угли</li>
       <li>Шукшина Ирина Алексеевна</li>
     </ol>
+
+    <img src="https://raw.githubusercontent.com/usachova/ITMO-WEB/main/pics/taylor/taylor-1.jpg"
+         width="250" height="250" title="тейлор-груша" alt="села сидит) ну пусть сидит">
+    <img src="https://raw.githubusercontent.com/usachova/ITMO-WEB/main/pics/taylor/taylor-2.jpg"
+         width="250" height="250" title="тейлор-шар" alt="в коробке)">
+    <img src="https://raw.githubusercontent.com/usachova/ITMO-WEB/main/pics/taylor/taylor-3.jpg"
+         width="250" height="250" title="тейлор+наруто" alt="смотрит наруто)">
+    <br>
+    <input id="comment" type="text" placeholder="введите текст">
+    <button onclick="send()">оставить комментарий</button>
+    <ol id="comments"></ol>
   </section>
 </main>
 
 {{> footer}}
+
+<script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+<script src="js/chat.js"></script>
 </body>
 </html>

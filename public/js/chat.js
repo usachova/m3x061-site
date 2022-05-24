@@ -1,5 +1,5 @@
-const message = document.getElementById('message');
-const messages = document.getElementById('messages');
+const message = document.getElementById('comment');
+const messages = document.getElementById('comments');
 
 message.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
