@@ -1,16 +1,13 @@
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Controller, Get, Render } from '@nestjs/common';
 
 @ApiTags('Chat')
 @Controller()
 export class ChatController {
-  @ApiOperation({
-    summary: 'Enter chat',
-    description: 'do it at your own risk!',
-  })
+  @ApiOperation({ summary: 'enter comment' })
   @Get('chat')
   @Render('chat')
-  showChat() {
+  getChat() {
     return;
   }
 }
