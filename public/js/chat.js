@@ -1,37 +1,17 @@
+const socket = io('/chat');
+
 const message = document.getElementById('comment');
 const messages = document.getElementById('comments');
 
-message.addEventListener('keypress', (event) => {
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    send();
-  }
-});
-
-const chatSocket = io('/chat');
-
 function send() {
-  chatSocket.emit('message', message.value);
+  socket.emit('message', message.value);
   message.value = '';
   message.focus();
 }
 
-chatSocket.on('connect', () => {
-  console.log('socket connected');
-});
-
-chatSocket.on('disconnect', () => {
-  console.log('socket disconnected');
-});
-
-chatSocket.on('message', (message) => {
-  console.log('received:', message);
-  receiveMessage(message);
-});
-
-function receiveMessage(message) {
+socket.on('message', (message) => {
   messages.appendChild(createMessage(message));
-}
+});
 
 function createMessage(message) {
   const li = document.createElement('li');
